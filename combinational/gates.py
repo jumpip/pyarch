@@ -14,6 +14,7 @@ class AndGate(new.Hardware):
                 self.x = x
                 self.y = y
                 self.o = o
+                #event handling fixes needed
                 hardware = partial(hardware, self)
 
         def hardware():
@@ -39,6 +40,7 @@ class OrGate(new.Hardware):
                 self.x = x
                 self.y = y
                 self.o = o
+                #event handling fixes needed
                 hardware = partial(hardware, self)
 
         def hardware():
@@ -60,9 +62,10 @@ class NotGate(new.Hardware):
                         (len(x) != 1 or len(o) != 1)
                 except NotImplementedError:
                         print('Invalid Connections')
-                super(OrGate,self).__init__([x, o])
+                super(NotGate,self).__init__([x, o])
                 self.x = x
                 self.o = o
+                #event handling fixes needed
                 hardware = partial(hardware, self)
 
         def hardware():
