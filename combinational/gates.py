@@ -5,7 +5,7 @@ import new
 
 class AndGate(new.Hardware):
 
-        def __init(self):
+        def __init(self,x,y,o):
                 try:
                         (len(x) != 1 or len(y) != 1 or len(o) != 1)
                 except NotImplementedError:
@@ -31,7 +31,7 @@ class AndGate(new.Hardware):
 
 class OrGate(new.Hardware):
 
-        def __init(self):
+        def __init(self,x,y,z,o):
                 try:
                         (len(x) != 1 or len(y) != 1 or len(o) != 1)
                 except NotImplementedError:
@@ -57,7 +57,7 @@ class OrGate(new.Hardware):
 
 class NotGate(new.Hardware):
 
-        def __init(self):
+        def __init(self,x,o):
                 try:
                         (len(x) != 1 or len(o) != 1)
                 except NotImplementedError:
