@@ -1,6 +1,6 @@
 class Hardware:
 	
-	def __init__(io):
+	def __init__(self,io):
 		self.ioMapping = io
 		self.internalWiring = []
 		self.components = []
