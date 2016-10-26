@@ -5,16 +5,16 @@ import new
 sys.path.insert(0, '../connectors')
 import transport
 
-class Decoder1x2(new.Hardware):
+class Decoder1x2(new.Hardware,object):
      def __init__(self,x,o):
                 try:
                         (len(x) != 1 or len(o) != 1)
                 except NotImplementedError:
                         print('Invalid Connections')
-                super(Decoder1x2,self).__init__([x, [o[0],x[0]]])
+                super(Decoder1x2,self).__init__([x,[o[0],x[0]]])
                 self.components.append(gates.NotGate(x,o))
 
-class Decoder2x4(new.Hardware):
+class Decoder2x4(new.Hardware,object):
     def __init__(self,x0,x1,o):
         try:
             (len(x0)!=1 or len(x1)!=1 or len(o)!=4)
@@ -28,5 +28,3 @@ class Decoder2x4(new.Hardware):
         self.components.append(gates.AndGate([self.internalWiring[0]],x1, [o[1]]))
         self.components.append(gates.AndGate(x0, [self.internalWiring[1]], [o[2]]))
         self.components.append(gates.AndGate(x0,x1,[o[3]]))
-        
-                            
