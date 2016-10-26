@@ -27,7 +27,7 @@ class AndGate(new.Hardware):
                 if(xSig == 0 or ySig == 0):
                         self.o[0].propagateSignal(0)
                 else:
-                        self.o[0].propagateSignal(xSig and ySig)
+                        self.o[0].propagateSignal(1)
 
 class OrGate(new.Hardware):
 
@@ -53,7 +53,7 @@ class OrGate(new.Hardware):
                 if(xSig == 1 or ySig == 1):
                         self.o[0].propagateSignal(1)
                 else:
-                        self.o[0].propagateSignal(xSig or ySig)
+                        self.o[0].propagateSignal(0)
 
 class NotGate(new.Hardware):
 
@@ -79,4 +79,29 @@ class NotGate(new.Hardware):
                 else:
                         self.o[0].propagateSignal(1)
 
+class XorGate(new.Hardware):
+
+        def __init(self,x,y,z,o):
+                try:
+                        (len(x) != 1 or len(y) != 1 or len(o) != 1)
+                except NotImplementedError:
+                        print('Invalid Connections')
+                super(OrGate,self).__init__([x, y, o])
+                self.x = x
+                self.y = y
+                self.o = o
+                #event handling fixes needed
+                hardware = partial(hardware, self)
+
+        def hardware():
+                xSig = self.x[0].getSignal()
+                ySig = self.y[0].getSignal()
+                try:
+                        xSig, ySig
+                except NameError:
+                        self.o[0].propagateSignal(undefined)
+                if(xSig != ySig):
+                        self.o[0].propagateSignal(1)
+                else:
+                        self.o[0].propagateSignal(0)
 
