@@ -1,14 +1,8 @@
 class StringIO:
 
   def __init__(self,ioMapping):
-    inp = list()
-    inp.append(ioMapping.x)
-    try:
-        inp.append(ioMapping.y)
-    except:
-        pass
-    self.i = inp
-    self.o = ioMapping.o
+    self.i = ioMapping.input
+    self.o = ioMapping.output
 
   def input(self,*args):
     inpIndex = len(args[0]) - 1
