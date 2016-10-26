@@ -21,6 +21,11 @@ class Decoder2x4(new.Hardware,object):
         except NotImplementedError:
             print('Invalid Connections')
         super(Decoder2x4,self).__init__([x0,x1,o])
+        input=[]
+        input.append(x0)
+        input.append(x1)
+        self.input=input
+        self.output=o
         self.internalWiring = wires(2)
         self.components.append(Decoder1x2(x0, [self.internalWiring[0]]))
         self.components.append(Decoder1x2(x1, [self.internalWiring[1]]))
