@@ -2,36 +2,38 @@ import sys
 sys.path.insert(0, '../utils')
 import ioManager
 import new
+from functools import partial
 
-class AndGate(new.Hardware):
+class AndGate(new.Hardware,object):
 
-        def __init(self,x,y,o):
+        def __init__(self,x,y,o):
                 try:
                         (len(x) != 1 or len(y) != 1 or len(o) != 1)
                 except NotImplementedError:
                         print('Invalid Connections')
-                super(AndGate,self).__init__([x, y, o])
+                super(AndGate,self).__init__([x,y,o])
                 self.x = x
                 self.y = y
                 self.o = o
-                #event handling fixes needed
-                hardware = partial(hardware, self)
+                x[0].on('signal', self.hardware)
+                y[0].on('signal', self.hardware)
+                hardware = partial(self.hardware, self)
 
-        def hardware():
+        def hardware(self):
                 xSig = self.x[0].getSignal()
                 ySig = self.y[0].getSignal()
                 try:
                         xSig, ySig
                 except NameError:
-                        self.o[0].propagateSignal(undefined)
+                        self.o[0].propagateSignal(None)
                 if(xSig == 0 or ySig == 0):
                         self.o[0].propagateSignal(0)
                 else:
                         self.o[0].propagateSignal(1)
 
-class OrGate(new.Hardware):
+class OrGate(new.Hardware,object):
 
-        def __init(self,x,y,z,o):
+        def __init__(self,x,y,o):
                 try:
                         (len(x) != 1 or len(y) != 1 or len(o) != 1)
                 except NotImplementedError:
@@ -40,10 +42,11 @@ class OrGate(new.Hardware):
                 self.x = x
                 self.y = y
                 self.o = o
-                #event handling fixes needed
-                hardware = partial(hardware, self)
+                x[0].on('signal', self.hardware)
+                y[0].on('signal', self.hardware)
+                hardware = partial(self.hardware, self)
 
-        def hardware():
+        def hardware(self):
                 xSig = self.x[0].getSignal()
                 ySig = self.y[0].getSignal()
                 try:
@@ -55,9 +58,9 @@ class OrGate(new.Hardware):
                 else:
                         self.o[0].propagateSignal(0)
 
-class NotGate(new.Hardware):
+class NotGate(new.Hardware,object):
 
-        def __init(self,x,o):
+        def __init__(self,x,o):
                 try:
                         (len(x) != 1 or len(o) != 1)
                 except NotImplementedError:
@@ -65,10 +68,10 @@ class NotGate(new.Hardware):
                 super(NotGate,self).__init__([x, o])
                 self.x = x
                 self.o = o
-                #event handling fixes needed
-                hardware = partial(hardware, self)
+                x[0].on('signal', self.hardware)
+                hardware = partial(self.hardware, self)
 
-        def hardware():
+        def hardware(self):
                 xSig = self.x[0].getSignal()
                 try:
                         xSig
@@ -79,21 +82,22 @@ class NotGate(new.Hardware):
                 else:
                         self.o[0].propagateSignal(1)
 
-class XorGate(new.Hardware):
+class XorGate(new.Hardware,object):
 
-        def __init(self,x,y,z,o):
+        def __init__(self,x,y,o):
                 try:
                         (len(x) != 1 or len(y) != 1 or len(o) != 1)
                 except NotImplementedError:
                         print('Invalid Connections')
-                super(OrGate,self).__init__([x, y, o])
+                super(XorGate,self).__init__([x, y, o])
                 self.x = x
                 self.y = y
                 self.o = o
-                #event handling fixes needed
-                hardware = partial(hardware, self)
+                x[0].on('signal', self.hardware)
+                y[0].on('signal', self.hardware)
+                hardware = partial(self.hardware, self)
 
-        def hardware():
+        def hardware(self):
                 xSig = self.x[0].getSignal()
                 ySig = self.y[0].getSignal()
                 try:
@@ -104,4 +108,3 @@ class XorGate(new.Hardware):
                         self.o[0].propagateSignal(1)
                 else:
                         self.o[0].propagateSignal(0)
-

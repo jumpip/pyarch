@@ -3,22 +3,18 @@ sys.path.insert(0, '../utils')
 import ioManager
 import new
 import threading
+from functools import partial
 from pyee import EventEmitter
 from hiatus import set_interval,clear_interval
+
 
 def wires(number):
     wireSet = list()
     for i in xrange(0,number):
-        wireSet.append(Wire())
+        wireSet.append(Wire(None))
     return wireSet
 
-class Wire(EventEmitter):
-
-    def __init__(self,sig):
-        super(Wire,self)
-        self.signal = sig
-        self.propagateSignal = partial(propagateSignal,self)
-        self.getSignal = partial(getSignal,self)
+class Wire(EventEmitter,object):
 
     def propagateSignal(self,newSig):
         oldSig = self.signal
@@ -26,19 +22,14 @@ class Wire(EventEmitter):
         if(oldSig != self.signal):
             self.emit('signal')
 
-    def getSignal():
+    def getSignal(self):
         return self.signal
 
-class Pulse(Wire):
+    def __init__(self,sig):
+        super(Wire,self).__init__()
+        self.signal = sig
 
-    def __init__(self,time,val):
-        super(Pulse,self)
-        self.val = val
-        self.timePeriod = time
-        self.alter = partial(alter,self)
-        self.switchOn = partial(switchOn,self)
-        self.switchOff = partial(switchOff,self)
-        self.interval = None
+class Pulse(Wire,object):
 
     def alter(self):
         self.propagateSignal(int(not self.signal))
@@ -53,3 +44,9 @@ class Pulse(Wire):
             clear_interval(self.interval)
             self.signal = None
             self.interval = None
+
+    def __init__(self,time,val):
+        super(Pulse,self).__init__()
+        self.val = val
+        self.timePeriod = time
+        self.interval = None

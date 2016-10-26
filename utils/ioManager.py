@@ -1,11 +1,16 @@
 class StringIO:
 
-  def __init__(ioMapping):
-    inputGroup = len(ioMapping) - 1
-    self.i = ioMapping[0:inputGroup]
-    self.o = ioMapping[inputGroup]
+  def __init__(self,ioMapping):
+    inp = list()
+    inp.append(ioMapping.x)
+    try:
+        inp.append(ioMapping.y)
+    except:
+        pass
+    self.i = inp
+    self.o = ioMapping.o
 
-  def input(*args):
+  def input(self,*args):
     inpIndex = len(args[0]) - 1
     totalInps = len(self.i)
     pos = 0
@@ -15,7 +20,8 @@ class StringIO:
       pos += 1
       inpIndex -= 1
 
-    outBuff = map(wire.getSignal(), self.o)
-    outBuff = "".join(outBuff)
+    out = list()
+    for i in self.o:
+        out.append(str(i.getSignal()))
+    outBuff = "".join(out)
     return outBuff
-
