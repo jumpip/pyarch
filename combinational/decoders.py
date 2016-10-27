@@ -26,10 +26,10 @@ class Decoder2x4(new.Hardware,object):
         input.append(x1)
         self.input=input
         self.output=o
-        self.internalWiring = wires(2)
+        self.internalWiring = transport.wires(2)
         self.components.append(Decoder1x2(x0, [self.internalWiring[0]]))
         self.components.append(Decoder1x2(x1, [self.internalWiring[1]]))
-        self.components.append(gates.AndGate([self.internalWiring[0]],[self.internalWiring[1]]))
+        self.components.append(gates.AndGate([self.internalWiring[0]],[self.internalWiring[1]],[o[0]]))
         self.components.append(gates.AndGate([self.internalWiring[0]],x1, [o[1]]))
         self.components.append(gates.AndGate(x0, [self.internalWiring[1]], [o[2]]))
         self.components.append(gates.AndGate(x0,x1,[o[3]]))
