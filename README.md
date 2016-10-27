@@ -54,16 +54,18 @@ As computer science students, we were reluctant to learn a totally new language 
 ### How to use?
 //To do
         
-        from pyarch import utils, connectors, combinational
-        
-        inputA = transport.wires(1)
-        inputB = transport.wires(1)
-        inputC = transport.wires(1)
+```python
+from pyarch import utils, connectors, combinational
 
-        hWare = gates.AndGate(inputA, inputB, inputC)
-        ioHandler = ioManager.StringIO(hWare)
+inputA = transport.wires(1)
+inputB = transport.wires(1)
+inputC = transport.wires(1)
 
-        print(ioHandler.input('1','1'))
+hWare = gates.AndGate(inputA, inputB, inputC)
+ioHandler = ioManager.StringIO(hWare)
+
+print(ioHandler.input('1','1'))
+```
 
 ### Abstraction Rules
 - Every Class/hardware extends on basic abstraction, Hardware.
@@ -86,25 +88,27 @@ As computer science students, we were reluctant to learn a totally new language 
 - With the help of getSignal and propagateSignal methods of Wire, read changes from input Wire instances, use your logic on them, and emit result through the output Wire instance.
 
 Example:
-        
-        class NotGate(new.Hardware,object):
-                def __init__(self,x,o):
-                        try:
-                                (len(x) != 1 or len(o) != 1)
-                        except NotImplementedError:
-                                print('Invalid Connections')
-                        super(NotGate,self).__init__([x, o])
-                        self.x = x
-                        self.o = o
-                        hardware = partial(hardware, self)
+```python
+class NotGate(new.Hardware,object):
+    def __init__(self,x,o):
+        try:
+            (len(x) != 1 or len(o) != 1)
+        except NotImplementedError:
+            print('Invalid Connections')
+        super(NotGate,self).__init__([x, o])
+        self.x = x
+        self.o = o
+        hardware = partial(hardware, self)
 
-                def hardware(self):
-                        xSig = self.x[0].getSignal()
-                        try:
-                                xSig
-                        except NameError:
-                                self.o[0].propagateSignal(undefined)
-                        if(xSig == 1):
-                                self.o[0].propagateSignal(0)
-                        else:
-                                self.o[0].propagateSignal(1)
+    def hardware(self):
+        xSig = self.x[0].getSignal()
+        try:
+            xSig
+        except NameError:
+            self.o[0].propagateSignal(undefined)
+        if(xSig == 1):
+            self.o[0].propagateSignal(0)
+        else:
+            self.o[0].propagateSignal(1)
+
+```
