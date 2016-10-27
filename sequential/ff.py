@@ -18,10 +18,11 @@ class SRFlipFlop(new.Hardware,object):
                 input=[]
                 input.append(s)
                 input.append(r)
+                input.append(c)
                 self.input=input
                 self.output=qqbar
                 self.internalWiring = transport.wires(2)
-                self.components.append(gates.AndGate([c],s,[self.internalWiring[0]]))
-                self.components.append(gates.AndGate([c],r,[self.internalWiring[1]]))
+                self.components.append(gates.AndGate(c,s,[self.internalWiring[0]]))
+                self.components.append(gates.AndGate(c,r,[self.internalWiring[1]]))
                 self.components.append(gates.NorGate([self.internalWiring[0]],[qqbar[0]],[qqbar[1]]))
                 self.components.append(gates.NorGate([self.internalWiring[1]],[qqbar[1]],[qqbar[0]]))
