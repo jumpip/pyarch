@@ -79,12 +79,13 @@ As computer science students, we were reluctant to learn a totally new language 
 
 **Some Basic Rules**
 - Every Class/hardware extends on Hardware.
+- Every Class must be declared as [New-Style](https://docs.python.org/2/reference/datamodel.html#new-style-and-classic-classes) not Classic-Style. 
 - All the logic goes inside the hardware method of your component's Class.
 - With the help of getSignal and propagateSignal methods of Wire, read changes from input Wire instances, use your logic on them, and emit result through the output Wire instance.
 
 Example:
         
-        class NotGate(new.Hardware):
+        class NotGate(new.Hardware,object):
                 def __init__(self,x,o):
                         try:
                                 (len(x) != 1 or len(o) != 1)
@@ -95,7 +96,7 @@ Example:
                         self.o = o
                         hardware = partial(hardware, self)
 
-                def hardware():
+                def hardware(self):
                         xSig = self.x[0].getSignal()
                         try:
                                 xSig
