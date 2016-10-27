@@ -14,4 +14,4 @@ inputC = transport.wires(1)
 hWare = gates.AndGate(inputA, inputB, inputC)
 ioHandler = ioManager.StringIO(hWare)
 
-print(ioHandler.input('1','0'))
+print(ioHandler.input('1','1'))
