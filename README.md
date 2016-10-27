@@ -1,5 +1,7 @@
 # PyArch
-#### Hardware Abstraction Library in Python
+#### Hardware Abstraction Library in Python 
+
+##### Note: This is a Python port of NodeJS module [Architect](https://github.com/mbad0la/Architect).
 
 1. [About PyArch](#about-pyarch)
 2. [Why PyArch](#why-pyarch)
