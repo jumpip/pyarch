@@ -36,8 +36,10 @@ As computer science students, we were reluctant to learn a totally new language 
         
 ### Inbuilt Abstractions:
 - Gates
-  - AndGate    
-  - OrGate      
+  - AndGate
+  - NandGate
+  - OrGate
+  - NorGate
   - XorGate      
   - NotGate
 - Decoders
@@ -46,7 +48,8 @@ As computer science students, we were reluctant to learn a totally new language 
 - Arithmetic circuits
   - Half Adder
   - Full Adder
-- Asynchronous timing circuits //To do
+  - Parallel-in Parellel-out Adder
+- Asynchronous timing circuits
   - S-R flip flop
   - D flip flop
 
@@ -93,6 +96,10 @@ Example:
                         except NotImplementedError:
                                 print('Invalid Connections')
                         super(NotGate,self).__init__([x, o])
+                        input = []      
+                        input.append(x)      
+                        self.input = input  # A list of all the inputs   
+                        self.output = o   
                         self.x = x
                         self.o = o
                         hardware = partial(hardware, self)
@@ -120,7 +127,7 @@ class GrayCode_CVT(new.Hardware,object):
         input.append(inp)   
         self.input=input
         self.output=out
-        inp[0].on('signal',partial(self.hardware,inp,out))
+        inp[0].on('signal',partial(self.hardware,inp,out))   #MSB remains same after conversion
         self.components.append(gates.XorGate([inp[0]],[inp[1]],[out[1]]))  
         self.components.append(gates.XorGate([inp[1]],[inp[2]],[out[2]]))
         self.components.append(gates.XorGate([inp[2]],[inp[3]],[out[3]]))
