@@ -32,7 +32,8 @@ As computer science students, we were reluctant to learn a totally new language 
 - __Wide range of Abstraction levels__: Ranging from abstract behavioral descriptions [see Hardware](utils/new.py) to [precise gate level descriptions](combinational/gates.py) to hardware built on top of these abstractions ([Decoders](combinational/decoders.py), [Arithmetic circuits such as Adders](combinational/arithmetics.py))
 
 ### Installation
-        We need to package it first
+                git clone https://github.com/jumpip/PyArch.git & cd PyArch/
+                python setup.py install
         
 ### Inbuilt Abstractions:
 - Gates
