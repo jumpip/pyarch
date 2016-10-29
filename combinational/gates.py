@@ -36,6 +36,38 @@ class AndGate(new.Hardware,object):
                 else:
                         self.o[0].propagateSignal(1)
 
+class NandGate(new.Hardware,object):
+
+        def __init__(self,x,y,o):
+                try:
+                        (len(x) != 1 or len(y) != 1 or len(o) != 1)
+                except NotImplementedError:
+                        print('Invalid Connections')
+                super(NandGate,self).__init__([x,y,o])
+                input=[]
+                input.append(x)
+                input.append(y)
+                self.input=input
+                self.output=o
+                self.x = x
+                self.y = y
+                self.o = o
+                x[0].on('signal', self.hardware)
+                y[0].on('signal', self.hardware)
+                hardware = partial(self.hardware, self)
+
+        def hardware(self):
+                xSig = self.x[0].getSignal()
+                ySig = self.y[0].getSignal()
+                try:
+                        xSig, ySig
+                except NameError:
+                        self.o[0].propagateSignal(None)
+                if(xSig == 0 or ySig == 0):
+                        self.o[0].propagateSignal(1)
+                else:
+                        self.o[0].propagateSignal(0)
+
 class OrGate(new.Hardware,object):
 
         def __init__(self,x,y,o):

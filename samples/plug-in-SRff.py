@@ -14,4 +14,4 @@ clock = transport.wires(1)
 hware = ff.SRFlipFlop(inputS,inputR,out,clock)
 iohandler = ioManager.StringIO(hware)
 
-print iohandler.input('1','0','1')
+print iohandler.input('0','1','1')
