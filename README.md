@@ -1,7 +1,6 @@
 # PyArch
 #### Hardware Abstraction Library in Python 
 
-##### Note: This is a Python port of NodeJS module [Architect](https://github.com/mbad0la/Architect).
 
 1. [About PyArch](#about-pyarch)
 2. [Why PyArch](#why-pyarch)
@@ -52,8 +51,8 @@ As computer science students, we were reluctant to learn a totally new language 
   - D flip flop
 
 ### How to use?
-//To do
-        
+//To Do
+```python        
         from pyarch import utils, connectors, combinational
         
         inputA = transport.wires(1)
@@ -64,7 +63,7 @@ As computer science students, we were reluctant to learn a totally new language 
         ioHandler = ioManager.StringIO(hWare)
 
         print(ioHandler.input('1','1'))
-
+```
 ### Abstraction Rules
 - Every Class/hardware extends on basic abstraction, Hardware.
 - Every initialisation argument to the class instance has to be an array of Wire instances (obtained from the wires method).
@@ -85,8 +84,8 @@ As computer science students, we were reluctant to learn a totally new language 
 - All the logic goes inside the hardware method of your component's Class.
 - With the help of getSignal and propagateSignal methods of Wire, read changes from input Wire instances, use your logic on them, and emit result through the output Wire instance.
 
-Example:
-        
+Example:  
+```python
         class NotGate(new.Hardware,object):
                 def __init__(self,x,o):
                         try:
@@ -108,3 +107,37 @@ Example:
                                 self.o[0].propagateSignal(0)
                         else:
                                 self.o[0].propagateSignal(1)
+```
+###Create using already existing Abstractions
+Let's plug in a Binary to Gray code convertor  
+
+Example:
+```python
+class GrayCode_CVT(new.Hardware,object):
+    def __init__(self,inp,out):
+        super(GrayCode_CVT,self).__init__([inp,out])
+        input=[]
+        input.append(inp)   
+        self.input=input
+        self.output=out
+        inp[0].on('signal',partial(self.hardware,inp,out))
+        self.components.append(gates.XorGate([inp[0]],[inp[1]],[out[1]]))  
+        self.components.append(gates.XorGate([inp[1]],[inp[2]],[out[2]]))
+        self.components.append(gates.XorGate([inp[2]],[inp[3]],[out[3]]))
+
+    def hardware(self,inp,out):
+        sig = inp[0].getSignal()
+        if sig:
+            out[0].propagateSignal(1)
+        else:
+            out[0].propagateSignal(0)
+```
+#### A special thanks to [Mayank Badola](https://github.com/mbad0la) for [Architect](https://github.com/mbad0la/Architect).
+
+### Built And Mantained By
+[**Jeevesh Narang**](https://github.com/JeeveshN)           
+[**Prachi Manchanda**](https://github.com/prachi1210)   
+[**Mansimar Kaur**](https://github.com/mansimarkaur)    
+
+
+
