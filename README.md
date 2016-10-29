@@ -8,8 +8,8 @@
 4. [Installation](#installation)
 5. [Inbuilt Abstractions](#inbuilt-abstractions)
 6. [How To Use?](#how-to-use)
-7. [Abstraction Rules](#abstraction-rules)
-8. [Create your own custom abstraction](#creating-a-custom-hardware-abstraction)
+7. [Create your own custom abstraction](#creating-a-custom-hardware-abstraction)
+8. [Contributors](#contributors)
 
 ### About PyArch
 PyArch is basically, a hardware abstraction library that can be used to model a digital system. It provides construct for modeling the system hierarchically and supports both top-down and bottom-up design methodologies. 
@@ -48,36 +48,13 @@ As computer science students, we were reluctant to learn a totally new language 
 - Arithmetic circuits
   - Half Adder
   - Full Adder
-  - Parallel-in Parellel-out Adder
+  - Parallel-in Parallel-out Adder
 - Asynchronous timing circuits
   - S-R flip flop
   - D flip flop
 
 ### How to use?
-//To Do
-```python        
-        from pyarch import utils, connectors, combinational
-        
-        inputA = transport.wires(1)
-        inputB = transport.wires(1)
-        inputC = transport.wires(1)
-
-        hWare = gates.AndGate(inputA, inputB, inputC)
-        ioHandler = ioManager.StringIO(hWare)
-
-        print(ioHandler.input('1','1'))
-```
-### Abstraction Rules
-- Every Class/hardware extends on basic abstraction, Hardware.
-- Every initialisation argument to the class instance has to be an array of Wire instances (obtained from the wires method).
-- An array consisting of I/O wires is passed onto the parent class Hardware, with only the last element being the output parameter. It is necessary to provide every input parameter and the output parameter to be able to wrap this in a StringIO instance to do I/O operations with string arguments.
-- Every class instance has two instance variables available from the parent Hardware instance :
-   - **internalWiring** - Array of Wire instances (initially empty).
-   - **components** - Array of abstractions used to build your hardware (initially empty).
-- Your entire logic goes into your Class' constructor.
-- **internalWiring** variable is used to initialise Wire instances that are not a part of the I/O for the hardware but are required to inter-connect the sub-components in your abstraction.
-- **components** variable is used to store instances of subcomponents used in your hardware. This helps a designer to quickly refer to all the build blocks that went into making a particular piece of hardware.
-
+See [Samples](samples/)
 
 ### Creating a custom Hardware Abstraction
 
@@ -116,7 +93,7 @@ Example:
                                 self.o[0].propagateSignal(1)
 ```
 ###Create using already existing Abstractions
-Let's plug in a Binary to Gray code convertor  
+Let's create a Binary to Gray code convertor  
 
 Example:
 ```python
@@ -139,12 +116,16 @@ class GrayCode_CVT(new.Hardware,object):
         else:
             out[0].propagateSignal(0)
 ```
-##### A special thanks to [Mayank Badola](https://github.com/mbad0la) for letting us use [Architect](https://github.com/mbad0la/Architect)
+##### Inspired from [Architect](https://github.com/mbad0la/Architect)
 
-### Built And Mantained By
-[**Jeevesh Narang**](https://github.com/JeeveshN)           
-[**Prachi Manchanda**](https://github.com/prachi1210)   
-[**Mansimar Kaur**](https://github.com/mansimarkaur)    
-
-
+### Contributors
+<!-- Contributors START
+Prachi Manchanda prachi1210 https://github.com/prachi1210 code doc
+Jeevesh Narang JeeveshN https://github.com/JeeveshN code doc
+Mansimar Kaur mansimarkaur https://github.com/mansimarkaur doc
+Contributors END -->
+<!-- Contributors table START -->
+| [![Jeevesh Narang](https://avatars.githubusercontent.com/JeeveshN?s=100)<br /><sub>Jeevesh Narang</sub>](https://github.com/JeeveshN)<br /> [📖]() | [![Prachi Manchanda](https://avatars.githubusercontent.com/prachi1210?s=100)<br /><sub>Prachi Manchanda</sub>](https://github.com/prachi1210)<br />[📖]() | [![Mansimar Kaur](https://avatars.githubusercontent.com/mansimarkaur?s=100)<br /><sub>Mansimar Kaur</sub>](https://github.com/mansimarkaur)<br /> [📖]() |
+| :---: | :---: | :---: | 
+<!-- Contributors table END -->
 
