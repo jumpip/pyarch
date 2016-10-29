@@ -132,7 +132,7 @@ class GrayCode_CVT(new.Hardware,object):
         else:
             out[0].propagateSignal(0)
 ```
-#### A special thanks to [Mayank Badola](https://github.com/mbad0la) for [Architect](https://github.com/mbad0la/Architect).
+##### A special thanks to [Mayank Badola](https://github.com/mbad0la) for letting us use [Architect](https://github.com/mbad0la/Architect)
 
 ### Built And Mantained By
 [**Jeevesh Narang**](https://github.com/JeeveshN)           
