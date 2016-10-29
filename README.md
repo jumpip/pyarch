@@ -135,7 +135,7 @@ Jeevesh Narang JeeveshN https://github.com/JeeveshN code doc
 Mansimar Kaur mansimarkaur https://github.com/mansimarkaur doc
 Contributors END -->
 <!-- Contributors table START -->
-| [![Jeevesh Narang](https://avatars.githubusercontent.com/JeeveshN?s=100)<br /><sub>Jeevesh Narang</sub>](https://github.com/JeeveshN)<br /> [📖]() | [![Prachi Manchanda](https://avatars.githubusercontent.com/prachi1210?s=100)<br /><sub>Prachi Manchanda</sub>](https://github.com/prachi1210)<br />[📖]() | [![Mansimar Kaur](https://avatars.githubusercontent.com/mansimarkaur?s=100)<br /><sub>Mansimar Kaur</sub>](https://github.com/mansimarkaur)<br /> [📖]() |
+| [![Jeevesh Narang](https://avatars.githubusercontent.com/JeeveshN?s=100)<br /><sub>Jeevesh Narang</sub>](https://github.com/JeeveshN)<br /> [📖](https://github.com/jumpip/PyArch/commits/master?author=JeeveshN) | [![Prachi Manchanda](https://avatars.githubusercontent.com/prachi1210?s=100)<br /><sub>Prachi Manchanda</sub>](https://github.com/prachi1210)<br />[📖](https://github.com/jumpip/PyArch/commits/master?author=prachi1210) | [![Mansimar Kaur](https://avatars.githubusercontent.com/mansimarkaur?s=100)<br /><sub>Mansimar Kaur</sub>](https://github.com/mansimarkaur)<br /> [📖](https://github.com/jumpip/PyArch/commits/master?author=mansimarkaur) |
 | :---: | :---: | :---: | 
 <!-- Contributors table END -->
 
