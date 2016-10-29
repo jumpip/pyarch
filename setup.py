@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 setup(
     name='pyarch',
-    version='0.0.1',
+    version='0.0.2',
     description='Hardware emulation library in python',
-    url='https://github.com/mansimarkaur/Hardware_abstraction',
+    url='https://github.com/jumpip/PyArch',
     author='Prachi Manchanda',
     author_email='prachi121096@gmail.com',
     license='MIT',
