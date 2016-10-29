@@ -1,5 +1,7 @@
 # PyArch
 #### Hardware Abstraction Library in Python 
+[![PyPI version](https://badge.fury.io/py/pyarch.svg)](https://badge.fury.io/py/pyarch)
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 
 1. [About PyArch](#about-pyarch)
