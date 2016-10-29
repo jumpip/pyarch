@@ -10,6 +10,7 @@
 6. [How To Use?](#how-to-use)
 7. [Create your own custom abstraction](#creating-a-custom-hardware-abstraction)
 8. [Contributors](#contributors)
+9. [License](LICENSE)
 
 ### About PyArch
 PyArch is basically, a hardware abstraction library that can be used to model a digital system. It provides construct for modeling the system hierarchically and supports both top-down and bottom-up design methodologies. 
@@ -32,8 +33,16 @@ As computer science students, we were reluctant to learn a totally new language 
 - __Wide range of Abstraction levels__: Ranging from abstract behavioral descriptions [see Hardware](utils/new.py) to [precise gate level descriptions](combinational/gates.py) to hardware built on top of these abstractions ([Decoders](combinational/decoders.py), [Arithmetic circuits such as Adders](combinational/arithmetics.py))
 
 ### Installation
-        git clone https://github.com/jumpip/PyArch.git & cd PyArch/
-        python setup.py install
+```
+git clone https://github.com/jumpip/PyArch.git & cd PyArch/
+python setup.py install
+```
+   
+   or 
+   
+```
+pip install pyarch
+```
         
 ### Inbuilt Abstractions:
 - Gates
@@ -130,3 +139,4 @@ Contributors END -->
 | :---: | :---: | :---: | 
 <!-- Contributors table END -->
 
+### PyArch is distributed under the [MIT License](LICENSE)
