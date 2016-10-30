@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name='pyarch',
-    version='0.0.3',
+    version='0.0.4',
     description='Hardware emulation library in python',
     url='https://github.com/jumpip/PyArch',
     author='Prachi Manchanda',
