@@ -67,7 +67,7 @@ pip install pyarch
   - D flip flop
 
 ### How to use?
-See [Samples](pyarch/samples/)
+See [Samples](samples/)
 
 ### Creating a custom Hardware Abstraction
 
