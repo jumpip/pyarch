@@ -1,13 +1,10 @@
-import sys
-sys.path.insert(0, '../utils')
-import ioManager
-import new
-sys.path.insert(0, '../connectors')
-import transport
-sys.path.insert(0,'../combinational')
-import gates
+from pyarch.utils import ioManager,new
+from pyarch.connectors import transport
+from pyarch.combinational import gates
 from functools import partial
+
 class GrayCode_CVT(new.Hardware,object):
+
     def __init__(self,inp,out):
         super(GrayCode_CVT,self).__init__([inp,out])
         input=[]

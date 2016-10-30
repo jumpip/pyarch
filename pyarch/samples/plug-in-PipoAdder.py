@@ -1,11 +1,6 @@
-import sys
-sys.path.insert(0, '../utils')
-import ioManager
-import new
-sys.path.insert(0, '../connectors')
-import transport
-sys.path.insert(0,'../combinational')
-import arithmetics
+from pyarch.utils import ioManager
+from pyarch.connectors import transport
+from pyarch.combinational import arithmetics
 
 inputA = transport.wires(4)
 inputB = transport.wires(4)
