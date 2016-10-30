@@ -11,8 +11,9 @@
 5. [Inbuilt Abstractions](#inbuilt-abstractions)
 6. [How To Use?](#how-to-use)
 7. [Create your own custom abstraction](#creating-a-custom-hardware-abstraction)
-8. [Contributors](#contributors)
-9. [License](LICENSE)
+8. [To-do list](#to-do-list)
+9. [Contributing](#contributing)
+10. [License](LICENSE)
 
 ### About PyArch
 PyArch is basically, a hardware abstraction library that can be used to model a digital system. It provides construct for modeling the system hierarchically and supports both top-down and bottom-up design methodologies. 
@@ -66,7 +67,7 @@ pip install pyarch
   - D flip flop
 
 ### How to use?
-See [Samples](pyarch/samples/)
+See [Samples](samples/)
 
 ### Creating a custom Hardware Abstraction
 
@@ -78,31 +79,31 @@ See [Samples](pyarch/samples/)
 
 Example:  
 ```python
-        class NotGate(new.Hardware,object):
-                def __init__(self,x,o):
-                        try:
-                                (len(x) != 1 or len(o) != 1)
-                        except NotImplementedError:
-                                print('Invalid Connections')
-                        super(NotGate,self).__init__([x, o])
-                        input = []      
-                        input.append(x)      
-                        self.input = input  # A list of all the inputs   
-                        self.output = o   
-                        self.x = x
-                        self.o = o
-                        hardware = partial(hardware, self)
+class NotGate(new.Hardware,object):
+        def __init__(self,x,o):
+                try:
+                        (len(x) != 1 or len(o) != 1)
+                except NotImplementedError:
+                        print('Invalid Connections')
+                super(NotGate,self).__init__([x, o])
+                input = []      
+                input.append(x)      
+                self.input = input  # A list of all the inputs   
+                self.output = o   
+                self.x = x
+                self.o = o
+                hardware = partial(hardware, self)
 
-                def hardware(self):
-                        xSig = self.x[0].getSignal()
-                        try:
-                                xSig
-                        except NameError:
-                                self.o[0].propagateSignal(undefined)
-                        if(xSig == 1):
-                                self.o[0].propagateSignal(0)
-                        else:
-                                self.o[0].propagateSignal(1)
+        def hardware(self):
+                xSig = self.x[0].getSignal()
+                try:
+                        xSig
+                except NameError:
+                        self.o[0].propagateSignal(undefined)
+                if(xSig == 1):
+                        self.o[0].propagateSignal(0)
+                else:
+                        self.o[0].propagateSignal(1)
 ```
 ###Create using already existing Abstractions
 Let's create a Binary to Gray code convertor  
@@ -130,15 +131,16 @@ class GrayCode_CVT(new.Hardware,object):
 ```
 ##### Inspired from [Architect](https://github.com/mbad0la/Architect)
 
-### Contributors
-<!-- Contributors START
-Prachi Manchanda prachi1210 https://github.com/prachi1210 code doc
-Jeevesh Narang JeeveshN https://github.com/JeeveshN code doc
-Mansimar Kaur mansimarkaur https://github.com/mansimarkaur doc
-Contributors END -->
-<!-- Contributors table START -->
-| [![Jeevesh Narang](https://avatars.githubusercontent.com/JeeveshN?s=100)<br /><sub>Jeevesh Narang</sub>](https://github.com/JeeveshN)<br /> [📖](https://github.com/jumpip/PyArch/commits/master?author=JeeveshN) | [![Prachi Manchanda](https://avatars.githubusercontent.com/prachi1210?s=100)<br /><sub>Prachi Manchanda</sub>](https://github.com/prachi1210)<br />[📖](https://github.com/jumpip/PyArch/commits/master?author=prachi1210) | [![Mansimar Kaur](https://avatars.githubusercontent.com/mansimarkaur?s=100)<br /><sub>Mansimar Kaur</sub>](https://github.com/mansimarkaur)<br /> [📖](https://github.com/jumpip/PyArch/commits/master?author=mansimarkaur) |
-| :---: | :---: | :---: | 
-<!-- Contributors table END -->
+### To-Do List
+- [ ] Multiplexers
+- [ ] Counters
+- [ ] Shift Registers
+- [ ] Pulse triggered FFs (JK FF, T FF)
+- [ ] Asynchronous inputs (Clear, Enable)
 
-### PyArch is distributed under the [MIT License](LICENSE)
+### Contributing
+Pick any of the topics in the task list above and get hacking! Or raise an issue or a pull request.
+
+This repository is maintained by [Jeevesh Narang](https://github.com/JeeveshN), [Prachi Manchanda](https://github.com/prachi1210) and [Mansimar Kaur](https://github.com/mansimarkaur)
+### License
+PyArch is distributed under the [MIT License](LICENSE)
