@@ -136,7 +136,8 @@ class GrayCode_CVT(new.Hardware,object):
 - [ ] Counters
 - [ ] Shift Registers
 - [ ] Pulse triggered FFs (JK FF, T FF)
-- [ ] Asynchronous inputs (Clear, Enable)
+- [x] Asynchronous inputs (Clear, Enable)
+- [x] Clocked inputs
 
 ### Contributing
 Pick any of the topics in the task list above and get hacking! Or raise an issue or a pull request.
