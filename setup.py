@@ -4,8 +4,8 @@ setup(
     version='0.0.4',
     description='Hardware emulation library in python',
     url='https://github.com/jumpip/PyArch',
-    author='Prachi Manchanda',
-    author_email='prachi121096@gmail.com',
+    author='Jeevesh Narang, Prachi Manchanda, Mansimar Kaur',
+    author_email='jumpip.git@gmail.com',
     license='MIT',
      classifiers=[
         'Development Status :: 3 - Alpha',
