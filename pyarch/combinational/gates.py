@@ -22,7 +22,6 @@ class AndGate(new.Hardware,object):
                 self.o = o
                 x[0].on('signal', self.hardware)
                 y[0].on('signal', self.hardware)
-                hardware = partial(self.hardware, self)
 
         def hardware(self):
                 xSig = self.x[0].getSignal()
@@ -54,8 +53,7 @@ class NandGate(new.Hardware,object):
                 self.o = o
                 x[0].on('signal', self.hardware)
                 y[0].on('signal', self.hardware)
-                hardware = partial(self.hardware, self)
-
+               
         def hardware(self):
                 xSig = self.x[0].getSignal()
                 ySig = self.y[0].getSignal()
@@ -118,8 +116,7 @@ class NorGate(new.Hardware,object):
                 self.o = o
                 x[0].on('signal', self.hardware)
                 y[0].on('signal', self.hardware)
-                hardware = partial(self.hardware, self)
-
+                
         def hardware(self):
                 xSig = self.x[0].getSignal()
                 ySig = self.y[0].getSignal()
@@ -148,7 +145,6 @@ class NotGate(new.Hardware,object):
                 self.x = x
                 self.o = o
                 x[0].on('signal', self.hardware)
-                hardware = partial(self.hardware, self)
 
         def hardware(self):
                 xSig = self.x[0].getSignal()
@@ -179,7 +175,6 @@ class XorGate(new.Hardware,object):
                 self.o = o
                 x[0].on('signal', self.hardware)
                 y[0].on('signal', self.hardware)
-                hardware = partial(self.hardware, self)
 
         def hardware(self):
                 xSig = self.x[0].getSignal()
