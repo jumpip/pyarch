@@ -26,7 +26,7 @@ As computer science students, we were reluctant to learn a totally new language 
 
         eg: A Full Adder can be implemented using two Half Adders and one Or Gate.
         
-- __Supports flexible design methodologies__: 
+- __Supports flexible design methodologies__:
   - **Top-down:** A top-down approach (also known as stepwise design) is essentially the breaking down of a system to gain insight into the sub-systems that make it up. In a top-down approach an overview of the system is formulated, specifying but not detailing any first-level subsystems.
   - **Bottom-up:** The bottom up design model starts with most specific and basic components. It proceeds with composing higher level of components by using basic or lower level components.
   - **Mixed:** Both, top-down and bottom-up approaches are not practical individually. Instead, a good combination of both is recommended.
@@ -53,7 +53,7 @@ pip install pyarch
   - NandGate
   - OrGate
   - NorGate
-  - XorGate      
+  - XorGate
   - NotGate
 - Decoders
   - Decoder 1x2
